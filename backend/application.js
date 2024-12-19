@@ -12,6 +12,7 @@ import connectDB from './src/database/connection.js'
 const app = express()
 dotenv.config()
 
+app.use(express.json())
 
 app.use("/api/users",userRoutes)
 app.use("/api/auth",authRoutes)
