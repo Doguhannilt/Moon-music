@@ -7,6 +7,7 @@ import adminRoutes from './src/routes/adminRoutes.js'
 import songRoutes from './src/routes/songRoutes.js'
 import albumRoutes from './src/routes/albumRoutes.js'
 import statRoutes from './src/routes/statRoutes.js'
+import connectDB from './src/database/connection.js'
 
 const app = express()
 dotenv.config()
@@ -19,5 +20,6 @@ app.use("/api/songs",songRoutes)
 app.use("/api/albums",albumRoutes)
 app.use("/api/stats",statRoutes)
 
+connectDB()
 
 app.listen(process.env.PORT, () => console.log('Server running'))
