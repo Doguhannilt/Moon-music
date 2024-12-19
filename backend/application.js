@@ -20,6 +20,7 @@ app.use("/api/songs",songRoutes)
 app.use("/api/albums",albumRoutes)
 app.use("/api/stats",statRoutes)
 
+// Connect to MongoDB
 connectDB()
 
 app.listen(process.env.PORT, () => console.log('Server running'))
