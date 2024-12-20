@@ -3,11 +3,8 @@ import { clerkClient } from "@clerk/express";
 export const protectRoute = async (req, res, next) => {
     if (!req.auth.userId) {
         return res.status(401).json({ message: "Unauthorized" });
-
     }
-
     next();
-
 }
 
 export const requireAdmin = async (req, res, next) => {
@@ -21,7 +18,6 @@ export const requireAdmin = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.log(error);
-        res.status(400).json({ message: error.message });
+        next(error)
     }
 }
