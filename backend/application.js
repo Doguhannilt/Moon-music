@@ -5,6 +5,8 @@ import dotenv from 'dotenv'
 import { clerkMiddleware } from '@clerk/express'
 import { encryption } from './src/utils/encryption.js'
 import path from 'path'
+import cors from 'cors'
+
 // Routes
 import userRoutes from './src/routes/userRoutes.js'
 import authRoutes from './src/routes/authRoutes.js'
@@ -22,6 +24,9 @@ const __dirname = path.resolve()
 dotenv.config()
 
 // Middleware(s)
+app.use(cors({
+    credentials: true
+}))
 app.use(express.json())
 app.use(clerkMiddleware({ publicKey: process.env.CLERK_SECRET_KEY }))
 app.use(fileUpload({
